@@ -3,8 +3,8 @@ import React,{useState} from 'react'
 import styles from './styles/sign-up.module.css'
 
 export default function SignUp() {
+    const proxy="http://localhost:5000"
     const [inputs, setInputs] = useState({})
-    const {username,password,name,telephone} = inputs
     const handleChange = (e) => {
         e.preventDefault()
         const { name, value } = e.target
@@ -12,12 +12,11 @@ export default function SignUp() {
     }
     const onSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/api/user/signup', inputs)
+        axios.post(proxy+'/api/user/signup', inputs)
             .then(res => {
                 const signup = res.data
                 document.getElementById("result-span").innerHTML = `
-                <h3>${signup.username}님 회원가입을 환영합니다.</h3>
-                
+                <h3> ${'['+signup.username+']'} 님 회원 가입을 환영합니다.</h3>
                 `
             })
             .catch(err=>alert(err))
