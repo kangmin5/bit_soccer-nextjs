@@ -12,16 +12,16 @@ export default function SignUp() {
     }
     const onSubmit = (e) => {
         e.preventDefault()
+
         axios.post(proxy+'/api/user/signup', inputs)
             .then(res => {
                 const signup = res.data
                 document.getElementById("result-span").innerHTML = `
-                <h3> ${'['+signup.username+']'} 님 회원 가입을 환영합니다.</h3>
+                <h3> ${JSON.stringify(signup)}</h3>
                 `
             })
             .catch(err=>alert(err))
     }
-
   return (
     <div className={styles.container}>
       <h1>회원가입</h1>
