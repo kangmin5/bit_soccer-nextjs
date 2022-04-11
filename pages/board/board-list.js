@@ -1,46 +1,47 @@
-import style from './style/board-list.module.css'
+import axios from 'axios'
+import {useState, useEffect } from 'react'
+// import style from './style/board-list.module.css'
+
+const Board = ({ columns,data}) => {
+    return (
+        <table>
+            <thead>
+                <tr>
+                    {columns.map((column,index) => (
+                        <th key={index}>{ column}</th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {data.length == 0
+                    ? <tr>
+                        <td>데이타가 없습니다.</td>
+                    </tr>
+                    : data.map((board,index) => (
+                        <tr key={index}>
+                            <td>{ board.passenger_id}</td>
+                            <td>{ board.name}</td>
+                            <td>{ board.team}</td>
+                            <td>{ board.subject}</td>
+                        </tr>
+                    ))}
+            </tbody>
+        </table>
+    )
+}
 
 export default function BoardList() {
+    const columns = ["PassengerId", "Name", "TeamId", "Subject"]
+    const [data, setData] = useState([])
+    useEffect(() => { 
+        axios.get('http://localhost:5000/api/board/list')
+            .then(res=> setData(res.data.boards))
+            .catch(err => alert(err))
+    },[])
     return (
         <>
-        <div className={style.container}>
-        <h1>BOARD List</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <td> passengerId</td>
-                            <td> name</td>
-                            <td>teamId</td>
-                            <td>subject</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>338383</td>
-                            <td>23232332</td>
-                            <td>23232</td>
-                            <td>2323233</td>                       
-                        </tr>
-                        <tr>
-                            <td>338383</td>
-                            <td>23232332</td>
-                            <td>23232</td>
-                            <td>2323233</td>                       
-                        </tr>
-                        <tr>
-                            <td>338383</td>
-                            <td>23232332</td>
-                            <td>23232</td>
-                            <td>2323233</td>                       
-                        </tr>
-                    </tbody>
-                
-                
-                </table>
-            
-            
-            
-            </div>
-        
+            <h1> Board List</h1>
+            <Board columns={columns} data={data}/>
         </>)
 }
+

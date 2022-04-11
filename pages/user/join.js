@@ -2,9 +2,10 @@ import axios from 'axios'
 import React,{useState} from 'react'
 import styles from './styles/sign-up.module.css'
 
-export default function SignUp() {
+export default function Join() {
     const proxy="http://localhost:5000"
-    const [inputs, setInputs] = useState({})
+  const [inputs, setInputs] = useState({})
+  
     const handleChange = (e) => {
         e.preventDefault()
         const { name, value } = e.target
@@ -13,7 +14,7 @@ export default function SignUp() {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        axios.post(proxy+'/api/user/signup', inputs)
+        axios.post(proxy+'/api/user/join', inputs)
             .then(res => {
                 const signup = res.data
                 document.getElementById("result-span").innerHTML = `

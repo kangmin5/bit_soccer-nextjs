@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-import {Layout} from '../common';
+import { Layout } from '../common';
+
 export default function Login(){
     const [inputs, setInputs] =useState({})
     const{username, password} = inputs;
