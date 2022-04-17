@@ -11,7 +11,7 @@ export interface TodoState{
     error: any
 }
 
-const initialState: TodoState = {
+ const initialState: TodoState = {
     loading: false,
     data: [],
     error: null,
@@ -23,7 +23,7 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         taskRequest (state: TodoState, payload) {
-            alert('진행 2: Reducer 내부')
+            alert(' 2.리듀서 내부로 들어온 할일은 ?'+JSON.stringify(payload))
             state.loading = true;
         },
         taskSuccess (state: TodoState, {payload}){
@@ -36,7 +36,7 @@ const todoSlice = createSlice({
         }
     }
 })
-const {reducer, actions} = todoSlice
+ 
+const { reducer, actions } = todoSlice
 export const todoActions = actions
 export default reducer
-

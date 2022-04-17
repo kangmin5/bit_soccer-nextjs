@@ -15,7 +15,7 @@ interface UserJoinSuccessType{
     payload: {
         userid: string
     }
-}
+} 
 
 function* join(user: UserJoinType){
     try{
@@ -27,6 +27,7 @@ function* join(user: UserJoinType){
          yield put(userActions.joinFailure(error))
     }
 }
+
 export function* watchJoin(){
     yield takeLatest(userActions.joinRequest, join)
 }

@@ -14,10 +14,10 @@ export default function AddTodo() {
   return (
       <form onSubmit={ e => {
           e.preventDefault()
-          dispatch(todoActions.taskRequest({todo}))
-          setTodo({
-            userid: '', task: '', completed: ''
-          })
+          dispatch(todoActions.taskRequest(todo))
+          // setTodo({
+          //   userid: '', task: '', completed: ''
+          // })
       }}>
         <table className={tableStyles.table}>
         <thead>
