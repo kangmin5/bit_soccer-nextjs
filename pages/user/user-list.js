@@ -1,54 +1,51 @@
 import axios from 'axios';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import styles from './styles/user-list.module.css'
+import tableStyles from '../common/styles/table.module.css'
+import Link from 'next/link'
 
-const Table = ({ columns, colspan, data}) => {
+export default function UserList(){
+
+    const columns = ["사용자ID", "이름", "이메일", "전화번호", "생년월일", "주소"];
+    const [data, setData] = useState([])
+    useEffect(()=>{
+      axios.get('http://localhost:5000/api/user/list').then(res=>{
+        setData(res.data.users)
+      }).catch(err=>{})
+    },[])
     return (
-      <table className={styles.table}>
+      <table className={tableStyles.table}>
         <thead>
-            {/**<th key={column} className={styles.td}>{column}</th> */}
-            <tr className={styles.tr}  >
-            {columns.map((column,index) => (
-                  <th className={styles.td} key={index}>{column}</th>
-            ))}
-          </tr>
+            <tr>
+                <th colSpan={6}><h1>회원목록</h1></th>
+            </tr>
+            
         </thead>
         <tbody>
-                {data.length == 0
-                    ? <tr className={styles.tr}>
-                            <td colSpan={colspan} className={styles.td}>데이터가 없습니다</td>
-                        </tr>
-                    : data.map((user) => (
-                        <tr className={styles.tr}  key={user.username} >
-                            <td className={styles.td}>
-                                <Link href={{pathname:`/user/[username]`,
-                                            query:{selectedUser: 'test'}}} as={`/user/${user.username}`}>
-                                <a>{user.username}</a>
-                                </Link>
-                        </td>
-                            <td className={styles.td}>{user.password}</td>
-                            <td className={styles.td}>{user.name}</td>
-                            <td className={styles.td}>{user.telephone}</td>
-                        </tr>
+              <tr>
+                  {columns.map((column, index) => (
+                        <td key={index} >{column}</td>
+                  ))}
+                </tr>
+                { data.length == 0  ?<tr >
+                                      <td colSpan={6} >데이터가 없습니다</td>
+                                      </tr>
+                :data.map((user) => (
+                <tr key={user.userid} >
+                  <td >
+                    <Link href={{pathname:`/user/[userid]`,
+                                query:{selectedUser: 'test'}}} as={`/user/${user.userid}`}>
+                      <a>{user.userid}</a>
+                    </Link>
+                  </td>
+                  <td >{user.name}</td>
+                  <td >{user.email}</td>
+                  <td >{user.phone}</td>
+                  <td >{user.birth}</td>
+                  <td >{user.address}</td>
+                </tr>
             ))}
+            
         </tbody>
       </table>
     );
-  }
-  
-export default function UserList() {
-    const columns = ["Username", "Password", "Name", "Telephone"];
-    const [data, setData] = useState([])
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/user/list').then(res => {
-            setData(res.data.users)
-        }).catch(err => { })
-    }, [])
-    return (<>
-        <h1>사용자 목록</h1>
-        <div className={styles.td}>
-            <Table columns={columns} colspan={4} data={data} />
-        </div>
-    </>)
 }
