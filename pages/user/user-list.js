@@ -25,11 +25,11 @@ export default function UserList(){
                   {columns.map((column, index) => (
                         <td key={index} >{column}</td>
                   ))}
-                </tr>
-                { data.length == 0  ?<tr >
-                                      <td colSpan={6} >데이터가 없습니다</td>
-                                      </tr>
-                :data.map((user) => (
+              </tr>
+              { data.length == 0  ?<tr >
+                                    <td colSpan={6} >데이터가 없습니다</td>
+                                    </tr>
+              :data.map((user) => (
                 <tr key={user.userid} >
                   <td >
                     <Link href={{pathname:`/user/[userid]`,
