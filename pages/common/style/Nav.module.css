@@ -1,9 +1,17 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
-  background-color: yellow;
-}
+  margin: 0 auto;
+  font-size: 15px;
+  width: 100%;
+  border: 1px solid rgb(32, 172, 81);
+  background-color: #02343F;
+  font-size: 16px;
+  line-height: 30px;
+  color:#F0EDCC;
+  }
+
+  
 .li {
   display: inline;
   margin-left: 40px;
+  
 }

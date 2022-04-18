@@ -1,5 +1,6 @@
 import {Layout} from "./common";
 import { wrapper } from '../redux/store.ts'
+import '../styles/globals.css'
 import Head from 'next/head'
 const App = ({ Component, pageProps}) => {
   return (<>
