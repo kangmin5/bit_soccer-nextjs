@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import tableStyles from '../common/styles/table.module.css'
+import tableStyles from '../common/style/table.module.css'
 import { useDispatch } from 'react-redux'
 import { boardActions } from '../../redux/reducers/boardReducer.ts'
+
 export default function Board(){
     const dispatch = useDispatch()
     const [inputs, setInputs] = useState({
@@ -29,7 +30,7 @@ export default function Board(){
                 <td><label>제 목</label></td>
                 <td><input type="text" onChange={handleChange}
                         id="title" name="title" placeholder="제목 입력"/></td>
-            </tr>
+            </tr> 
             <tr>
                 <td>
                     <label>작성자</label>

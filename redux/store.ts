@@ -4,7 +4,7 @@ import createSagaMiddleware from '@redux-saga/core'
 import rootSaga from './sagas/index.ts'
 import rootReducer from './reducers/index.ts'
 
-const reducer = require('./reducers')
+
 const isDev = process.env.NODE_ENV === 'development' 
 // const isProd = process.env.NODE_ENV === 'production' 
 
@@ -12,8 +12,7 @@ const sagaMiddleware = createSagaMiddleware()
 
 const createStore = () =>{
     const store = configureStore({
-        // reducer: rootReducer, 
-        reducer,
+        reducer: rootReducer, 
         devTools: true,
         // preloadedState: ,  //ssr 구현시 사용함
         middleware: [sagaMiddleware],

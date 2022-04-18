@@ -1,4 +1,4 @@
-import tableStyles from '../common/styles/table.module.css'
+import tableStyles from '../common/style/table.module.css'
 export default function  Login(){
     const handleChange = ()=>{}
     return <form onSubmit={

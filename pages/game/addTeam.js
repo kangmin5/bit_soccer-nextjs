@@ -1,6 +1,6 @@
-import tableStyles from '../common/styles/table.module.css'
+import style from '../common/style/table.module.css'
 
-export default function TeamForm(){
+export default function AddTeam(){
     const handleSubmit = e => {
         e.preventDefault()
         alert(`등록할 팀 정보 : `)
@@ -13,47 +13,39 @@ export default function TeamForm(){
                     <label className={style.label} htmlFor="teamId">팀 ID</label>
                 </div>
                 <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="TeamId" name="TeamId"/>
+                    <input type="text" className={style.inputText} id="teamid" name="teamid"/>
                 </div>
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                    <label className={style.label} htmlFor="teamId">팀 ID</label>
+                    <label className={style.label} htmlFor="home">연고지</label>
                 </div>
                 <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="TeamId" name="TeamId"/>
+                    <input type="text" className={style.inputText} id="home" name="home"/>
                 </div>
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                    <label className={style.label} htmlFor="teamId">연고지</label>
+                    <label className={style.label} htmlFor="teamname">팀명</label>
                 </div>
                 <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="TeamId" name="TeamId"/>
+                    <input type="text" className={style.inputText} id="teamname" name="teamname"/>
                 </div>
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                    <label className={style.label} htmlFor="teamId">팀명</label>
+                    <label className={style.label} htmlFor="orgyyyy">창단년도</label>
                 </div>
                 <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="TeamId" name="TeamId"/>
+                    <input type="text" className={style.inputText} id="orgyyyy" name="orgyyyy"/>
                 </div>
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                    <label className={style.label} htmlFor="orgYyyy">창단년도</label>
+                    <label className={style.label} htmlFor="stadiumname">스타디움 명칭</label>
                 </div>
                 <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="orgYyyy" name="orgYyyy"/>
-                </div>
-            </div>
-            <div className={style.row}>
-                <div className={style.col25}>
-                    <label className={style.label} htmlFor="stadiumName">스타디움 명칭</label>
-                </div>
-                <div className={style.col75}>
-                    <input type="text" className={style.inputText} id="stadiumName" name="stadiumName"/>
+                    <input type="text" className={style.inputText} id="stadiumname" name="stadiumname"/>
                 </div>
             </div>
             <div className={style.row}>

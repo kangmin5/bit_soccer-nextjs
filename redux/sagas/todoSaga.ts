@@ -25,6 +25,7 @@ function* addTodo(todo: TodoType){
         yield put(todoActions.taskFailure(error))   
     }
 }
+
 export function* watchTodo(){
     yield takeLatest(todoActions.taskRequest, addTodo)
 }

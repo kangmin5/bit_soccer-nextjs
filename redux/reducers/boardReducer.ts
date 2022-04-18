@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-
-
 export interface PostType{
     title: string
     name: string

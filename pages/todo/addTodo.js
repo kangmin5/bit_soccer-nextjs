@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import tableStyles from '../common/styles/table.module.css'
+import tableStyles from '../common/style/table.module.css'
 import { todoActions } from '../../redux/reducers/todoReducer.ts'
 export default function AddTodo() {
     const [todo, setTodo] = useState({userid: '', task:'', completed:''})
@@ -13,11 +13,12 @@ export default function AddTodo() {
     }
   return (
       <form onSubmit={ e => {
-          e.preventDefault()
+        e.preventDefault()
+          alert(`진행1 onsubmit 클릭: ${JSON.stringify(todo)}`)
           dispatch(todoActions.taskRequest(todo))
-          // setTodo({
-          //   userid: '', task: '', completed: ''
-          // })
+          setTodo({
+            userid: '', task: '', completed: ''
+          }) 
       }}>
         <table className={tableStyles.table}>
         <thead>

@@ -32,7 +32,7 @@ const todoSlice = createSlice({
         },
         taskFailure (state: TodoState, {payload}){
             state.data = payload;
-            state.loading
+            state.loading  
         }
     }
 })
