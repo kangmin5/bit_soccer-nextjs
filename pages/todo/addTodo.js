@@ -29,17 +29,21 @@ export default function AddTodo() {
         <tbody>
             <tr >
                 <td><label>할일등록</label></td>
-                <td>
-        <input
-          type="text"
-          id="new-todo-input"
-          className="input input__lg"
-          name="text"
-          autoComplete="off"
-          onChange={handleChange}
-        />
-        <button type="submit" style={{marginLeft:"20px"}}  className="btn btn__primary btn__lg">
-          Add
+            <td>
+
+                <input type="text" placeholder='userid' name="userid" onChange={handleChange}/>
+                <input
+                  type="text"
+                  id="task"
+                  className="input input__lg"
+                name="task"
+                placeholder='할일내용'
+                autoComplete="off"
+                
+                  onChange={handleChange}
+              />
+        <button type="submit" style={{marginLeft:"10px"}}  >
+          추가
         </button></td >
             </tr>
             <tr>

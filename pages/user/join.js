@@ -12,17 +12,20 @@ export default function  Join(){
         const{name, value} = e.target;
         setUser({...user,[name]: value})
     }
-    return <form onSubmit={
-        e => {
-            e.preventDefault()
+    const handleSubmit = e => {
+        e.preventDefault()
             alert(' 진행 1: 회원가입 클릭 ');
             dispatch(userActions.joinRequest(user))
-            setUser({
-                userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
-            })
-        }
+            setUser(()=>"")
+        
+            // setUser({
+            //     userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
+            // })
+        // window.location.href = "./login"
     }
-    >
+    return(
+    <div>
+    <form onSubmit={handleSubmit }>
         <table className={tableStyles.table}>
             <thead>
                 <tr>
@@ -66,5 +69,7 @@ export default function  Join(){
                 </tr>
             </tbody>
         </table>
-    </form>
+        </form>
+    </div>
+    )
 }
